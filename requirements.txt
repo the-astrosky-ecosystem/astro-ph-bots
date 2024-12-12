@@ -1,0 +1,10 @@
+arxiv
+certifi
+charset-normalizer
+feedparser
+idna
+pylatexenc
+pytz
+requests
+sgmllib3k
+urllib3
