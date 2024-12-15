@@ -82,7 +82,9 @@ for paper in results:
     post.append(f"{formatTex(paper.title)}")
     namestring = formatAuthors(paper.authors, shortnames=False)
     post.append(f"{namestring}")
-    post.append(f"{paper.pdf_url} {emojis}")
+    # don't need https:// prefix for bsky
+    abs_url = paper.pdf_url.split('//')[-1].replace("pdf", "abs")
+    post.append(f"{abs_url} {emojis}")
     full_len = len('\n'.join(post))
     if full_len > CHARLIM:
         char_surplus =  full_len - CHARLIM + 3
@@ -96,7 +98,3 @@ for paper in results:
     feeds.append(feedlist)
     print(post_string)
     print(f"[posted {paper.published} - was {full_len} of {CHARLIM} characters, reduced by {full_len-len(post_string)}]\n")
-
-# print("="*60)
-# print(posts)
-# print(feeds)
